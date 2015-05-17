@@ -136,7 +136,7 @@ Here is an example and description of the contents:
        <EcomPassword>#1Password</EcomPassword>
        <PortGroups>
            <PortGroup>OS-PORTGROUP1-PG</PortGroup>
-	   <PortGroup>OS-PORTGROUP2-PG</PortGroup>
+	       <PortGroup>OS-PORTGROUP2-PG</PortGroup>
        </PortGroups>
        <Array>000198700439</Array>
        <Pool>FC_GOLD1</Pool>
@@ -160,6 +160,17 @@ For backends not using FAST automated tiering, the pool is a single pool that ha
 For backends exposing FAST policy automated tiering, the pool name is the bind pool to be used with the FAST policy.
 
 The FastPolicy tag conveys the name of the FAST Policy to be used. By including this tag, volumes managed by this backend are treated as under FAST control.  Omitting the FastPolicy tag means FAST is not enabled on the provided storage pool. 
+
+EMC VMAX3 with SLO Provisioning:
+Three additional parameters were introduced for EMC VMAX3's new Service Level Objective provisioning model.:
+       <slo>SLO_NAME</slo>
+       <workload>WORKLOAD_TYPE</workload>
+       <isv3>isV3</isv3>
+Slo is one of the SLO's available in VMAXe, namely 'Diamond', 'Platinum', 'Gold', 'Silver', 'Bronze', 'Optimized'.  These define the response time objectives of the workload placed within.  Please consult VMAX documentation or the Unisphere(TM) online help for the exact response time goals for each.
+
+Workload is one of the workload type descriptors that help modify the SLO response time goals by suggesting the workload type (large block, small block, etc) if known.  Two examples are 'OLTP' and 'DSS'.  Please consult VMAX documentation or the Unisphere(TM) online help for the complete list of workload types.
+
+isV3 is a required parameter to be set to define the array as a VMAX3 using SLO Provisioning.
  
 ## Configuring Connectivity
 
